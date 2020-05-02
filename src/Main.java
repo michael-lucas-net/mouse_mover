@@ -19,7 +19,6 @@ public class Main {
             "       --test : run test iteration\n" +
             "       -t     : run test iteration\n";
 
-
     /**
      * Moves cursor every n minutes. Useful to prevent pc from shutdown
      * or when active work time is being tracked.
@@ -51,15 +50,13 @@ public class Main {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
         while (true) {
-            Thread.sleep(intervall * 1000);
+            Thread.sleep((intervall * 1000) * 60);
             moveCursor(MIN_OFFSET);
 
             System.out.println("Moved cursor at: "
                     + formatter.format(new Date()));
         }
-
     }
-
 
     private static void testRun() throws InterruptedException {
         System.out.println("Starting test run: large offset");
@@ -93,7 +90,6 @@ public class Main {
         return true;
     }
 
-
     private static void moveCursor(int offset) {
         waitForCursor();
         try {
@@ -114,7 +110,6 @@ public class Main {
         }
     }
 
-
     private static void waitForCursor() {
         try {
             Point beforeTimer, afterTimer;
@@ -126,6 +121,5 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }
